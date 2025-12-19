@@ -1,16 +1,16 @@
 :root{
-	/* Light theme: white + yellow */
-	--bg: #ffffff;
+	/* Light theme: soft gray background + softened accent */
+	--bg: #f8f9fb; /* slightly off-white to reduce eye strain */
 	--card-bg: #ffffff;
 	--text: #0b1220; /* slightly softer than pure black */
 	--muted: #6b7280;
-	--accent: #d4af37; /* yellow/gold for light mode */
+	--accent: #caa84a; /* softened gold for light mode */
 	--accent-2: #4f7cff; /* light blue (for use in dark theme) */
-	/* multi-level accents for contribution graph (light) */
-	--accent-level-1: #fff4df;
-	--accent-level-2: #ffe08a;
-	--accent-level-3: #ffd04a;
-	--accent-level-4: #d4af37;
+	/* multi-level accents for contribution graph (light) - softened */
+	--accent-level-1: #fff7e6;
+	--accent-level-2: #ffe9b3;
+	--accent-level-3: #ffd58a;
+	--accent-level-4: #caa84a;
 	--glass: rgba(255,255,255,0.6);
 	--radius: 14px;
 }
@@ -46,7 +46,7 @@ body{
 
 a{color:var(--accent);text-decoration:none}
 
-.container{max-width:1100px;margin:48px auto;padding:24px}
+.container{max-width:980px;margin:48px auto;padding:24px}
 
 .loader{border-radius:50%;border:4px solid rgba(0,0,0,0.06);border-top-color:var(--accent);width:36px;height:36px;animation:spin 1s linear infinite}
 .loader.small{width:18px;height:18px;border-width:3px}

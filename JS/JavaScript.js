@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetchGitHubRepos(GITHUB_USERNAME);
 	bindContactForm();
 	bindCopyEmail();
-	bindInfoPanel();
 	bindPhoneButton();
 });
 
@@ -232,18 +231,5 @@ function bindPhoneButton(){
 	});
 }
 
-function bindInfoPanel(){
-	const toggle = document.getElementById('info-toggle');
-	const panel = document.getElementById('info-panel');
-	const close = document.getElementById('info-close');
-	if(!toggle || !panel) return;
-	toggle.addEventListener('click', ()=>{
-		// correctly toggle hidden state
-		const isHidden = panel.getAttribute('aria-hidden') === 'true';
-		panel.setAttribute('aria-hidden', String(!isHidden));
-		toggle.setAttribute('aria-expanded', String(!isHidden));
-	});
-	close && close.addEventListener('click', ()=>{ panel.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); });
-	document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ panel.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); } });
-}
+// Info panel removed — function intentionally deleted
 

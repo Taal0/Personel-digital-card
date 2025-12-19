@@ -2,38 +2,84 @@
 .header-controls{display:flex;gap:8px;align-items:center}
 /* theme toggle handled by .theme-switch */
 
+
 .profile-card{display:grid;grid-template-columns:minmax(240px,320px) 1fr;gap:14px;background:var(--card-bg);padding:24px;border-radius:var(--radius);box-shadow:0 10px 40px rgba(2,6,23,0.15);max-width:1100px;margin:28px auto}
 
 /* Dark theme: stronger card lift and subtle accent glow so it feels separated from the page */
 body.theme-dark .profile-card{
-	box-shadow: 0 18px 50px rgba(0,0,0,0.65), 0 0 36px rgba(79,124,255,0.08);
-	border: 1px solid rgba(255,255,255,0.04);
-	background: linear-gradient(180deg, rgba(12,12,15,0.94), rgba(18,16,20,0.96));
-	backdrop-filter: blur(6px);
+	/* brighter and deeper shadow for stronger layered depth */
+	background: linear-gradient(180deg, rgba(42,42,46,0.92), rgba(36,34,38,0.94));
+	box-shadow:
+		0 30px 80px rgba(2,6,23,0.60),
+		0 10px 34px rgba(2,6,23,0.26),
+		0 0 60px color-mix(in srgb, var(--accent) 12%, transparent);
+	border: 1px solid color-mix(in srgb, var(--accent) 8%, rgba(255,255,255,0.07));
+	backdrop-filter: blur(8px);
 }
 .profile-left{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
 .profile-right{display:flex;flex-direction:column;gap:22px}
 
-.avatar-wrap{width:220px;height:220px;border-radius:20px;overflow:hidden;box-shadow:0 20px 55px rgba(2,6,23,0.18)}
-.avatar{width:100%;height:100%;object-fit:cover;display:block}
+.avatar-wrap{width:220px;aspect-ratio:1/1;border-radius:20px;overflow:hidden;box-shadow:0 20px 55px rgba(2,6,23,0.18)}
+.avatar{width:100%;height:100%;object-fit:cover;display:block;object-position:50% 50%;transition:transform .18s ease}
 
 h1{margin:6px 0 0 0;font-size:1.45rem}
 .role{color:var(--muted);margin:0}
 
 .socials{display:flex;gap:12px;margin-top:8px}
-.socials a{padding:6px 10px;border-radius:8px;background:rgba(0,0,0,0.03)}
+.socials a{padding:6px 10px;border-radius:8px;background:color-mix(in srgb, var(--card-bg) 6%, transparent);border:1px solid color-mix(in srgb, var(--muted) 8%, transparent);transition:background .18s ease,color .18s ease,transform .18s ease,border-color .18s ease;display:inline-flex;align-items:center;gap:8px}
+
+/* Swap background and text color on hover/focus */
+.socials a:focus,.socials a:hover{background:var(--text);color:var(--bg);border-color:color-mix(in srgb,var(--text) 14%, transparent);transform:translateY(-4px);box-shadow:0 12px 30px rgba(2,6,23,0.08)}
+.socials a svg{fill:currentColor;transition:fill .18s ease;}
 
 .skills-list{display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;align-items:start}
 
 @media (max-width:880px){
 	.container{padding:16px}
 	.profile-card{grid-template-columns:1fr;align-items:flex-start;padding:18px}
-	.avatar-wrap{margin:0 auto;width:140px;height:140px}
+	.avatar-wrap{margin:0 auto;width:140px;aspect-ratio:1/1}
 	.profile-left{align-items:center;text-align:center}
 }
 
+/* Mobile-first adjustments were removed per user request */
+
 @media (max-width:1100px){
-    .profile-card{grid-template-columns:minmax(240px,320px) 1fr;padding:22px}
-    .avatar-wrap{width:160px;height:160px}
+	.profile-card{grid-template-columns:minmax(240px,320px) 1fr;padding:22px}
+	.avatar-wrap{width:160px;aspect-ratio:1/1}
+}
+
+@media (max-width:880px){
+	.avatar-wrap{width:140px;aspect-ratio:1/1}
+}
+
+/* Targeted mobile fixes (preserve design; only adjust stacking and widths) */
+@media (max-width:768px){
+	.page-header{padding:12px}
+	.container{padding:16px}
+	.profile-card{grid-template-columns:1fr;gap:12px;padding:16px}
+	.profile-left,.profile-right{width:100%}
+	.avatar-wrap{margin:0 auto;width:160px;aspect-ratio:1/1}
+	/* Quick actions: wrap and avoid overflow on medium mobiles */
+	.contact-quick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+	.contact-quick .btn{flex:1 1 auto;min-width:120px}
+	/* Skills: allow single column for narrow screens */
+	.skills-list{grid-template-columns:1fr}
+	/* Repos full-width and readable spacing */
+	.repo-list{gap:10px}
+	.repo-list .repo{width:100%}
+	.socials{justify-content:center;flex-wrap:wrap}
+}
+
+@media (max-width:480px){
+	.page-header{padding:10px}
+	.container{padding:12px}
+	.profile-card{padding:14px;gap:10px}
+	.avatar-wrap{margin:0 auto;width:140px;aspect-ratio:1/1}
+	/* Stack quick actions on very small screens */
+	.contact-quick{flex-direction:column;align-items:stretch}
+	.contact-quick .btn{width:100%;min-width:0}
+	.socials{gap:8px}
+	h1{font-size:1.25rem}
+	.profile-right{gap:16px}
 }
 
