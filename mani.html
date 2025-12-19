@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Personel Dijital Kart</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/layout.css">
+		<link rel="stylesheet" href="style/components.css">
+	</head>
+	<body>
+		<header class="page-header">
+			<div id="github-widget" class="github-widget" aria-live="polite">
+				<!-- GitHub repos (hidden) -->
+			</div>
+
+			<div class="header-controls">
+				<!-- theme switch -->
+				<label class="theme-switch" for="theme-switch">
+					<input id="theme-switch" type="checkbox" role="switch" aria-label="Tema değiştir">
+					<span class="switch-track"><span class="switch-thumb"></span></span>
+				</label>
+			</div>
+
+		</header>
+
+		<main class="container">
+			<section class="profile-card" aria-labelledby="profile-name">
+				<aside class="profile-left">
+					<div class="avatar-wrap">
+						<img src="resources/Gemini_Generated_Image_1sh2x01sh2x2(2).png" alt="Profil fotoğrafı" class="avatar" id="profile-avatar">
+					</div>
+					<h1 id="profile-name">Talat Özdemir</h1>
+					<p class="role">Developer</p>
+
+					<nav class="socials" aria-label="Sosyal bağlantılar">
+						<a href="https://github.com/taal0" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+						<a href="https://www.linkedin.com/in/talat-%C3%B6zdemir-4b8531394/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+						<a href="https://www.instagram.com/ltal0l/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+					</nav>
+
+					<div class="contact-quick">
+						<button id="copy-email" class="btn small">E-postayı kopyala</button>
+						<!-- WhatsApp button (replace data-phone with your number in international format e.g. +90530XXXXXXX) -->
+						<button id="phone-btn" class="btn small" data-phone="+905529847676" aria-label="WhatsApp ile mesaj">WhatsApp ile Mesaj</button>
+					</div>
+
+					<!-- Repo list (replaces graph) -->
+					<div id="repo-list" class="repo-list" aria-live="polite">
+						<div class="loader small"></div>
+					</div>
+				</aside>
+
+				<div class="profile-right">
+					<section class="skills" aria-labelledby="skills-title">
+						<h2 id="skills-title">Skills</h2>
+						<div id="skills-list" class="skills-list">
+							<!-- Skills rendered by JS -->
+						</div>
+					</section>
+
+					<section class="contact" aria-labelledby="contact-title">
+						<h2 id="contact-title">İletişim</h2>
+						<form id="contact-form" class="contact-form" data-form-endpoint="https://formspree.io/f/xdankvql" action="https://formspree.io/f/xdankvql" method="POST">
+							<label for="sender-name">İsim</label>
+							<input id="sender-name" name="name" type="text" required>
+
+							<label for="sender-email">E-posta</label>
+							<input id="sender-email" name="email" type="email" required>
+
+							<label for="message">Mesaj</label>
+							<textarea id="message" name="message" rows="4" required></textarea>
+
+							<button type="submit" class="btn primary">Gönder</button>
+							<div id="form-status" class="form-status" aria-live="polite"></div>
+				
+						</form>
+					</section>
+				</div>
+			</section>
+		</main>
+
+		<!-- floating info panel -->
+		<button id="info-toggle" class="info-toggle" aria-expanded="false" aria-controls="info-panel">i</button>
+		<div id="info-panel" class="info-panel" role="dialog" aria-hidden="true">
+			<button id="info-close" class="info-close" aria-label="Kapat">✕</button>
+			<div class="info-content">
+				<p><strong>Neler yapıldı:</strong></p>
+				<ul>
+					<li>Formspree placeholder var; gerçek e-posta almak için Formspree endpointinizi <code>data-form-endpoint</code> özniteliğine yapıştırın.</li>
+					<li>EmailJS veya kendi backend entegrasyonu isterseniz, ekleyebilirim.</li>
+					<li>GitHub: görseller ve repo listesi public API ile çekiliyor; rate limit oluşursa auth veya proxy ile çözüm uygulanabilir.</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="JS/JavaScript.js" defer></script>
+	</body>
+</html>
+

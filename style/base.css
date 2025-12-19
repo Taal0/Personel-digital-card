@@ -1,0 +1,70 @@
+:root{
+	/* Light theme: white + yellow */
+	--bg: #ffffff;
+	--card-bg: #ffffff;
+	--text: #0b1220; /* slightly softer than pure black */
+	--muted: #6b7280;
+	--accent: #d4af37; /* yellow/gold for light mode */
+	--accent-2: #4f7cff; /* light blue (for use in dark theme) */
+	/* multi-level accents for contribution graph (light) */
+	--accent-level-1: #fff4df;
+	--accent-level-2: #ffe08a;
+	--accent-level-3: #ffd04a;
+	--accent-level-4: #d4af37;
+	--glass: rgba(255,255,255,0.6);
+	--radius: 14px;
+}
+
+/* Dark theme overrides when body has .theme-dark */
+body.theme-dark{
+	/* Dark theme: black + lighter blue accent */
+	--bg: #050507;
+	--card-bg: linear-gradient(180deg, rgba(6,6,6,0.95), rgba(12,12,12,0.95));
+	--text: #e8e6e1;
+	--muted: #bdb6a8;
+	--accent: #4f7cff; /* lighter blue so it doesn't clash with black */
+	--accent-2: #d4af37; /* gold available if needed */
+	/* multi-level accents for contribution graph (dark) */
+	--accent-level-1: #0b1630; /* very dark blue */
+	--accent-level-2: #234a88; /* medium blue */
+	--accent-level-3: #6b4cc8; /* purple */
+	--accent-level-4: #4f7cff; /* bright blue */
+	--glass: rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background:var(--bg);
+	color:var(--text);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	line-height:1.45;
+}
+
+a{color:var(--accent);text-decoration:none}
+
+.container{max-width:1100px;margin:48px auto;padding:24px}
+
+.loader{border-radius:50%;border:4px solid rgba(0,0,0,0.06);border-top-color:var(--accent);width:36px;height:36px;animation:spin 1s linear infinite}
+.loader.small{width:18px;height:18px;border-width:3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* utility */
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;background:transparent;border:1px solid color-mix(in srgb, var(--text) 8%, transparent);cursor:pointer;color:var(--text)}
+.btn.small{padding:6px 8px;font-size:0.9rem}
+.btn.primary{background:var(--accent);color:#fff;border:none}
+.btn:focus{outline:3px solid color-mix(in srgb, var(--accent) 30%, transparent)}
+
+/* Accessibility: visible focus styles */
+:focus{outline:3px solid color-mix(in srgb, var(--accent) 40%, transparent);outline-offset:2px}
+
+/* High contrast fallback for keyboard users */
+@media (prefers-contrast: more){
+	:focus{outline:3px solid var(--accent)}
+}
+
+.form-status{margin-top:10px;font-size:0.95rem;color:var(--muted)}
+
